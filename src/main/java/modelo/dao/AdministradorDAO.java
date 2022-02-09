@@ -1,5 +1,15 @@
 package modelo.dao;
 
-public class AdministradorDAO {
+import modelo.entidad.Administrador;
 
+public class AdministradorDAO {
+	public AdministradorDAO() {
+		
+	}
+	
+	public Administrador autenticar(String nombre, String clave) {
+		return null;
+	}
+	
+	
 }
