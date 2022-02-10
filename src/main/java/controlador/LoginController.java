@@ -6,36 +6,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class LoginController
- */
+import modelo.dao.AdministradorDAO;
+import modelo.entidad.Administrador;
+
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public LoginController() {
-        super();
-        // TODO Auto-generated constructor stub
+    	
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		getServletContext().getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//1 Obtener los parametros de la Vista
+		String usuario = request.getParameter("user");
+		String clave = request.getParameter("pass");
+		//2 Lammar al modelo para autenticar
+		AdministradorDAO adminDAO = new AdministradorDAO();
+		Administrador adminAuten = adminDAO.autenticar(usuario, clave);
+		if(adminAuten != null) {
+			HttpSession miSesion = request.getSession();
+			miSesion.setAttribute("usuario", adminAuten);
+			//3 Llamar a la vista o al controlador
+			request.getRequestDispatcher("ListarPersonaController").forward(request, response);
+		}else {
+			response.sendRedirect("/jsp/login.jsp");
+		}
 	}
-
 }
