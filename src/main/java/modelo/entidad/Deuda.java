@@ -8,6 +8,13 @@ public class Deuda implements Serializable {
 	private int id;
 	private String anio;
 	private String valor;
+	
+	public Deuda(int id, String anio, String valor) {
+		super();
+		this.id = id;
+		this.anio = anio;
+		this.valor = valor;
+	}
 	public int getId() {
 		return id;
 	}
