@@ -20,7 +20,7 @@ public class LoginController extends HttpServlet {
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/jsp/consulta/consulta_login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

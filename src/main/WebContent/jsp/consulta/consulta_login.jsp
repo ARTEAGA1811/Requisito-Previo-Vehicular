@@ -15,26 +15,29 @@
 <body>
 
 	<div class="topnav">
-		<div class="texto">Requisito previo - Matriculación</div>
+		<div class="texto">Requisito previo - Matriculaciï¿½n</div>
 		<div class="login-container">
 			<form method="get" action="LoginController">
 				<input type="text" placeholder="Usuario" name="Usuario"> <input
-					type="text" placeholder="Contraseña" name="clave">
+					type="text" placeholder="Contraseï¿½a" name="clave">
 				<button type="submit">Login</button>
 			</form>
 		</div>
 	</div>
 	<div class="wrapper">
 		<h2>Consulta de multas pendiente</h2>
-		<p>Seleccione tipo de Búsqueda:</p>
+		<p>Seleccione tipo de Bï¿½squeda:</p>
 		<form method="get" action="ConsultarVehiculoController">
-			<label class="radio-inline"> <input type="radio"
-				name="optradio" checked>Placa
-			</label> <label class="radio-inline"> <input type="radio"
-				name="optradio">Chasis
+			<label class="radio-inline"> 
+				<input type="radio" name="rbtnRadio" checked value="placa"> Placa
+			</label> 
+
+			<label class="radio-inline"> 
+				<input type="radio" name="rbtnRadio" value="chasis">Chasis
 			</label>
+
 			<p>Ingrese Dato</p>
-			<input type="text" name="placa">
+			<input type="text" name="valor_placa_chasis">
 			<button type="submit">Consultar</button>
 			<br>
 		</form>

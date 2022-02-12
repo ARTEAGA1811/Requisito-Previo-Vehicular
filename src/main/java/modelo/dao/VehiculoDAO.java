@@ -105,13 +105,13 @@ public class VehiculoDAO {
 		
 	}
 	
-	public Vehiculo getVehiculo(int id) {
+	public Vehiculo getVehiculo(String placa_chasis, String valor_placa_chasis) {
 		
 		Vehiculo miVehiculo = null;
 		
 		try {
-			pstmt = ConexionBDD.getConexion().prepareStatement("SELECT * FROM VEHICULO WHERE id = ?");
-			pstmt.setString(1, Integer.toString(id));
+			pstmt = ConexionBDD.getConexion().prepareStatement("SELECT * FROM VEHICULO WHERE"+placa_chasis+" = ?");
+			pstmt.setString(1, valor_placa_chasis);
 			
 			while (rs.next()) {
 				miVehiculo = new Vehiculo();
