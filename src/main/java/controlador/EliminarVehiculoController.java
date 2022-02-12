@@ -23,7 +23,9 @@ public class EliminarVehiculoController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//3. Llamo a la vista o al controlador
+		request.getRequestDispatcher("ListarPersonasController").forward(request, response);
+				
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,8 +33,8 @@ public class EliminarVehiculoController extends HttpServlet {
 		VehiculoDAO miVehiculoDao = new VehiculoDAO();
 		miVehiculoDao.eliminar(idVehiculo);
 		
-		//3. Llamo a la vista o al controlador
-		request.getRequestDispatcher("ListarPersonasController").forward(request, response);
+		doGet(request, response);
+		
 		
 		
 	}

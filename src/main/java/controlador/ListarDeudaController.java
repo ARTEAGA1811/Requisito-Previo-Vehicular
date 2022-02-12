@@ -25,7 +25,7 @@ public class ListarDeudaController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int miId = Integer.parseInt(request.getParameter("id"));
+		int miId = Integer.parseInt(request.getParameter("idVehiculo"));
 		DeudaDAO miDeudaDao = new DeudaDAO();
 		List<Deuda> misDeudas= miDeudaDao.getDeudas(miId);
 		
@@ -33,7 +33,7 @@ public class ListarDeudaController extends HttpServlet {
 		request.setAttribute("deudas", misDeudas );
 		
 		//Se debe redireccionar a la pagina de listar deudas	
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/listarDeudas.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/administrador/listaDeudas.jsp");
 		dispatcher.forward(request, response);
 	}
 

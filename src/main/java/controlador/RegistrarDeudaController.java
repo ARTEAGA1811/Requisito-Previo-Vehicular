@@ -26,7 +26,8 @@ public class RegistrarDeudaController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//3. Llamo a la vista o al controlador
+		request.getRequestDispatcher("ListarDeudaController").forward(request, response);
 	}
 
 
@@ -39,9 +40,10 @@ public class RegistrarDeudaController extends HttpServlet {
 		
 		DeudaDAO miDeudaDAO = new DeudaDAO();
 		miDeudaDAO.registrar(miDeuda);
+		
+		doGet(request, response);
 
-		//3. Llamo a la vista o al controlador
-		request.getRequestDispatcher("ListarDeudaController").forward(request, response);
+		
 	}
 
 }
