@@ -18,8 +18,10 @@
 		<div class="texto">Requisito previo - Matriculaciï¿½n</div>
 		<div class="login-container">
 			<form method="get" action="LoginController">
-				<input type="text" placeholder="Usuario" name="Usuario"> <input
-					type="text" placeholder="Contraseï¿½a" name="clave">
+			
+				<input type="text" placeholder="Usuario" name="txtUsuario">
+				<input type="password" placeholder="Contraseña" name="txtClave">
+				
 				<button type="submit">Login</button>
 			</form>
 		</div>

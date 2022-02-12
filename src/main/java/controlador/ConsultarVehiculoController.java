@@ -29,17 +29,26 @@ public class ConsultarVehiculoController extends HttpServlet {
 		
 		String placa_chasis = request.getParameter("rbtnRadio");
 		String valor_placa_chasis = request.getParameter("valor_placa_chasis");
+		
 		System.out.println("La placa o chasis: " + placa_chasis);
 		System.out.println("Valor de la placa o chasis: " + valor_placa_chasis);
 		
 		VehiculoDAO miVehiculoDAO = new VehiculoDAO();
 		Vehiculo miVehiculo = miVehiculoDAO.getVehiculo(placa_chasis,valor_placa_chasis);
 		
+		System.out.println(miVehiculo);
+		
 		DeudaDAO miDeudaDao = new DeudaDAO();
 		List<Deuda> misDeudas = miDeudaDao.getDeudas(miVehiculo.getId());
 		
-		request.setAttribute("miVehiculo", miVehiculo);
+		
 		request.setAttribute("misDeudas", misDeudas);
+		
+		request.setAttribute("placa", miVehiculo.getPlaca());
+		request.setAttribute("marca", miVehiculo.getMarca());
+		request.setAttribute("modelo", miVehiculo.getModelo());
+		request.setAttribute("anio", miVehiculo.getAnio());
+//		request.setAttribute("propietario", miVehiculo.getPropietario());
 		
 		getServletContext().getRequestDispatcher("/jsp/consulta/informacionVehiculo.jsp").forward(request, response);
 	

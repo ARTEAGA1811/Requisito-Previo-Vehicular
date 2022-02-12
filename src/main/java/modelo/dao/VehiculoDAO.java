@@ -107,14 +107,16 @@ public class VehiculoDAO {
 	
 	public Vehiculo getVehiculo(String placa_chasis, String valor_placa_chasis) {
 		
-		Vehiculo miVehiculo = null;
+		Vehiculo miVehiculo = new Vehiculo();
 		
 		try {
-			pstmt = ConexionBDD.getConexion().prepareStatement("SELECT * FROM VEHICULO WHERE"+placa_chasis+" = ?");
+			pstmt = ConexionBDD.getConexion().prepareStatement("SELECT * FROM VEHICULO WHERE "+placa_chasis+" = ?");
 			pstmt.setString(1, valor_placa_chasis);
+			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				miVehiculo = new Vehiculo();
+				miVehiculo.setId(rs.getInt("id"));
 				miVehiculo.setPlaca(rs.getString("placa"));
 				miVehiculo.setChasis(rs.getString("chasis"));
 				miVehiculo.setMarca(rs.getString("marca"));
@@ -126,6 +128,7 @@ public class VehiculoDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(miVehiculo);
 		return miVehiculo;
 	}
 	
