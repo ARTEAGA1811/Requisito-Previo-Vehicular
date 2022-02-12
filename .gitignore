@@ -4,3 +4,4 @@
 /build
 /src/main/java/modelo/conexion/ConexionBDD.java
 /src/main/WebContent/WEB-INF/lib
+*.class
