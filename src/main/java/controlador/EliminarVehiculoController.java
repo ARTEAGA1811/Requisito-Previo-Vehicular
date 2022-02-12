@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.dao.VehiculoDAO;
+
 /**
  * Servlet implementation class EliminarVehiculoController
  */
@@ -14,28 +16,25 @@ import javax.servlet.http.HttpServletResponse;
 public class EliminarVehiculoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public EliminarVehiculoController() {
-        super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int idVehiculo = Integer.parseInt(request.getParameter("id"));
+		VehiculoDAO miVehiculoDao = new VehiculoDAO();
+		miVehiculoDao.eliminar(idVehiculo);
+		
+		//3. Llamo a la vista o al controlador
+		request.getRequestDispatcher("ListarPersonasController").forward(request, response);
+		
+		
 	}
 
 }
