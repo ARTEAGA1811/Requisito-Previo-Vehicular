@@ -13,6 +13,7 @@ public class Vehiculo implements Serializable {
 	private String modelo;
 	private String propietario;
 	private String anio;
+	private  Deuda deuda;
 	
 	public Vehiculo() {
 		
@@ -72,6 +73,16 @@ public class Vehiculo implements Serializable {
 
 	public void setAnio(String anio) {
 		this.anio = anio;
+	}
+	
+	
+
+	public Deuda getDeuda() {
+		return deuda;
+	}
+
+	public void setDeuda(Deuda deuda) {
+		this.deuda = deuda;
 	}
 
 	@Override
