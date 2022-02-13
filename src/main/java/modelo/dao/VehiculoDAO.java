@@ -11,9 +11,9 @@ import modelo.entidad.Vehiculo;
 public class VehiculoDAO {
 	
 	private static final String SQL_READ = "SELECT * FROM VEHICULO";
-	private static final String SQL_INSERT = "INSERT INTO VEHICULO (placa, chasis, marca, modelo, propietario, año) VALUES (?,?,?,?,?,?)";
+	private static final String SQL_INSERT = "INSERT INTO VEHICULO (placa, chasis, marca, modelo, propietario, anio) VALUES (?,?,?,?,?,?)";
 	private static final String SQL_UPDATE = "UPDATE VEHICULO SET  chasis = ?, marca = ?, modelo = ?, propietario = ?, anio = ? where id = ?";
-	private static final String SQL_DELETE = "DELETE  FROM VEHICULO WHERE id = ?";
+	private static final String SQL_DELETE = "DELETE FROM VEHICULO WHERE id = ?";
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 	
@@ -33,6 +33,7 @@ public class VehiculoDAO {
 			
 			while (rs.next()) {
 				miVehiculo = new Vehiculo();
+				miVehiculo.setId(rs.getInt("id"));
 				miVehiculo.setPlaca(rs.getString("placa"));
 				miVehiculo.setChasis(rs.getString("chasis"));
 				miVehiculo.setMarca(rs.getString("marca"));
@@ -59,6 +60,8 @@ public class VehiculoDAO {
 			pstmt.setString(3, miVehiculo.getModelo());
 			pstmt.setString(4, miVehiculo.getPropietario());
 			pstmt.setString(5, miVehiculo.getAnio());
+			pstmt.setInt(6, miVehiculo.getId());
+			
 			int fila = pstmt.executeUpdate();
 			System.out.println("Numero de filas afectadas :" + fila);
 			return true;
@@ -73,6 +76,8 @@ public class VehiculoDAO {
 	public boolean eliminar(int id) {
 		try {
 			pstmt = ConexionBDD.getConexion().prepareStatement(SQL_DELETE);
+			pstmt.setInt(1, id);
+			
 			int fila = pstmt.executeUpdate();
 			System.out.println("Numero de filas afectadas :" + fila);
 			return true;

@@ -25,18 +25,20 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//1 Obtener los parametros de la Vista
-		String usuario = request.getParameter("user");
-		String clave = request.getParameter("pass");
-		//2 Lammar al modelo para autenticar
+		String usuario = request.getParameter("txtUsuario");
+		String clave = request.getParameter("txtClave");
+		//2 Llamar al modelo para autenticar
 		AdministradorDAO adminDAO = new AdministradorDAO();
 		Administrador adminAuten = adminDAO.autenticar(usuario, clave);
+		
 		if(adminAuten != null) {
 			HttpSession miSesion = request.getSession();
 			miSesion.setAttribute("usuario", adminAuten);
 			//3 Llamar a la vista o al controlador
-			request.getRequestDispatcher("ListarPersonaController").forward(request, response);
+			request.getRequestDispatcher("ListarVehiculoController").forward(request, response);
 		}else {
-			response.sendRedirect("/jsp/login.jsp");
+			getServletContext().getRequestDispatcher("/jsp/consulta/consulta_login.jsp").forward(request, response);
+			
 		}
 	}
 }

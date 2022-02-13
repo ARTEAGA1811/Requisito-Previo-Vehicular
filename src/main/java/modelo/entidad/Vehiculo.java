@@ -13,11 +13,26 @@ public class Vehiculo implements Serializable {
 	private String modelo;
 	private String propietario;
 	private String anio;
-	private  Deuda deuda;
-	
+
 	public Vehiculo() {
 		
 	}
+	
+	
+
+	public Vehiculo(int id, String placa, String chasis, String marca, String modelo, String propietario, String anio) {
+		super();
+		this.id = id;
+		this.placa = placa;
+		this.chasis = chasis;
+		this.marca = marca;
+		this.modelo = modelo;
+		this.propietario = propietario;
+		this.anio = anio;
+	}
+	
+
+
 
 	public int getId() {
 		return id;
@@ -77,13 +92,6 @@ public class Vehiculo implements Serializable {
 	
 	
 
-	public Deuda getDeuda() {
-		return deuda;
-	}
-
-	public void setDeuda(Deuda deuda) {
-		this.deuda = deuda;
-	}
 
 	@Override
 	public String toString() {

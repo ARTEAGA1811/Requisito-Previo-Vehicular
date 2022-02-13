@@ -23,17 +23,29 @@ public class EliminarVehiculoController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//3. Llamo a la vista o al controlador
-		request.getRequestDispatcher("ListarPersonasController").forward(request, response);
+		int idVehiculo = Integer.parseInt(request.getParameter("idVehiculo"));
+		VehiculoDAO miVehiculoDao = new VehiculoDAO();
+		
+		boolean esEliminado = miVehiculoDao.eliminar(idVehiculo);
+		if(esEliminado) {
+			request.getRequestDispatcher("ListarVehiculoController").forward(request, response);
+
+		}else {
+			System.out.println("Error en la eliminacion del vehiculo");
+			request.getRequestDispatcher("ListarVehiculoController").forward(request, response);
+
+		}
+		
+		
+
 				
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idVehiculo = Integer.parseInt(request.getParameter("id"));
-		VehiculoDAO miVehiculoDao = new VehiculoDAO();
-		miVehiculoDao.eliminar(idVehiculo);
 		
-		doGet(request, response);
+		
+		
+		
 		
 		
 		

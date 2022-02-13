@@ -7,35 +7,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.dao.VehiculoDAO;
+import modelo.entidad.Vehiculo;
+
 /**
  * Servlet implementation class REgistrarVehiculoController
  */
-@WebServlet("/REgistrarVehiculoController")
+@WebServlet("/RegistrarVehiculoController")
 public class RegistrarVehiculoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public RegistrarVehiculoController() {
-        super();
-        // TODO Auto-generated constructor stub
+        
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		VehiculoDAO vehiculodao = new VehiculoDAO();
+		Vehiculo miVehiculo = new Vehiculo();
+		miVehiculo.setAnio(request.getParameter("anio"));
+		miVehiculo.setChasis(request.getParameter("chasis"));
+		miVehiculo.setModelo(request.getParameter("modelo"));
+		miVehiculo.setPropietario(request.getParameter("propietario"));
+		miVehiculo.setPlaca(request.getParameter("placa"));
+		miVehiculo.setMarca(request.getParameter("marca"));
+		
+		boolean estaRegistrado = vehiculodao.registrar(miVehiculo);
+		if(estaRegistrado) {
+			request.getRequestDispatcher("ListarVehiculoController").forward(request, response);
+		}else {
+			System.out.println("Error al registrar el vehiculo");
+			request.getRequestDispatcher("ListarVehiculoController").forward(request, response);		
+		}
+		
 	}
 
 }

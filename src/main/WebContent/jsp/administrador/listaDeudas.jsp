@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -12,9 +15,9 @@
 </head>
 
 <body>
-
+	
     <div class="wrapper">
-        <h1>Deudas vehiculo ${}}</h1>
+        <h1>Deudas vehiculo ${placa}</h1>
         <div class="boton">
             <a href="RegistrarVehiculoController">Nueva Deuda</a>
         </div>
@@ -26,11 +29,11 @@
                 <td>Anio</td>
             </tr>
 
-            <c:forEach items="${}" var="">
+            <c:forEach items="${deudas}" var="deuda">
                 <tr>
-                    <td>${}</td>
-                    <td>${}</td>
-                    <td>${}</td>
+                    <td>Impuesto Rodaje</td>
+                    <td>${deuda.valor} </td>
+                    <td>${deuda.anio}</td>
                 </tr>
             </c:forEach>
 

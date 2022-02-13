@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,6 @@ public class ListarVehiculoController extends HttpServlet {
        
 
     public ListarVehiculoController() {
-        super();
     }
 
 
@@ -27,6 +27,10 @@ public class ListarVehiculoController extends HttpServlet {
 		
 		VehiculoDAO miVehiculoDAO = new VehiculoDAO();
 		List <Vehiculo> listaVehiculos = miVehiculoDAO.getVehiculos();
+		for( Vehiculo bucle: listaVehiculos) {
+			System.out.println(bucle.toString());
+		}
+		
 		request.setAttribute("vehiculos", listaVehiculos);
 		getServletContext().getRequestDispatcher("/jsp/administrador/listaVehiculos.jsp").forward(request, response);
 	

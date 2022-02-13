@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -16,23 +18,23 @@
     <div class="wrapper">
         <h1>Lista de Vehiculos</h1>
         <div class="boton">
-            <a href="RegistrarVehiculoController">Nuevo Vehiculo</a>
+            <a href="RedireccionController?redireccion=0">Nuevo Vehiculo</a>
         </div>
 
         <table class="tabla">
             <tr>
                 <td>Placa</td>
                 <td>Propietario</td>
-                <td>Anio</td>
+                <td>Año</td>
                 <td>Acciones</td>
             </tr>
 
-            <c:forEach items="${}" var="">
+            <c:forEach items="${vehiculos}" var="vehiculo">
                 <tr>
-                    <td>${}</td>
-                    <td>${}</td>
-                    <td>${ }</td>
-                    <td><a href="">Ver deudas</a> || <a href="">Actualizar</a> | <a href="">Eliminar</a>
+                    <td>${vehiculo.placa}</td>
+                    <td>${vehiculo.propietario}</td>
+                    <td>${vehiculo.anio}</td>
+                    <td><a href="ListarDeudaController?idVehiculo=${vehiculo.id}&placa=${vehiculo.placa}">Ver deudas</a> || <a href="RedireccionController?placa=${vehiculo.placa}&redireccion=1">Actualizar</a> | <a href="EliminarVehiculoController?idVehiculo=${vehiculo.id}">Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>
