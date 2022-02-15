@@ -53,7 +53,7 @@ public class RedireccionListaDeudas extends HttpServlet {
 		
 		
 		
-		//String idd = String.valueOf(request.getAttribute("idVehiculo"));
+		String idd = String.valueOf(request.getAttribute("idVehiculo"));
 		int miId = Integer.parseInt(idd);
 		String miPlaca = (String) request.getAttribute("placa");
 		

@@ -18,8 +18,12 @@
     
             <section class="nav">
                 <h1 class="dato_principal">Placa del vehículo ${placa} </h1>
-                <form method="POST" action="LogOutController" class="nav_boton">
-                    <input type="submit" value="Atrás" class="boton_back">
+                
+                <form method="POST" action="ListarDeudaController" class="nav_boton">
+                
+                	<input type="text" name="placa" value="${placa}" style="visibility: hidden">
+					<input type="text" name="idVehiculo" value="${id}" style="visibility: hidden">
+                    <input type="submit" value="Atrás" class="boton_back">                                
                 </form>
             </section>
 

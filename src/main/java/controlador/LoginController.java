@@ -38,6 +38,7 @@ public class LoginController extends HttpServlet {
 			
 			request.getRequestDispatcher("ListarVehiculoController").forward(request, response);
 		}else {
+			request.setAttribute("autenticacion", "falso");
 			getServletContext().getRequestDispatcher("/jsp/consulta/consulta_login.jsp").forward(request, response);
 			
 		}

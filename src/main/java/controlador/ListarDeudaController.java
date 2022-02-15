@@ -29,6 +29,12 @@ public class ListarDeudaController extends HttpServlet {
 		int miId = Integer.parseInt(request.getParameter("idVehiculo"));
 		String miPlaca = request.getParameter("placa");
 
+		System.out.println("Se imprime el id: " + miId);
+		
+		//if(request.getParameter("idVehiculo") == null) {
+		//	miId = Integer.parseInt(String.valueOf(request.getAttribute("idVehiculo")));
+		//	miPlaca = (String) request.getAttribute("placa");	
+		//}
 		
 		DeudaDAO miDeudaDao = new DeudaDAO();
 		List<Deuda> misDeudas= miDeudaDao.getDeudas(miId);

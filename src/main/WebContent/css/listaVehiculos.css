@@ -75,7 +75,7 @@
 .container{
     background-color: var(--celeste);
     display: grid;
-    grid-template-columns: 90%;
+    grid-template-columns: 94%;
     justify-content: center;
 }
 
@@ -119,7 +119,7 @@
     width: 25%;
     margin: 0;
     vertical-align: top;
-    border: 1px solid #000;
+    border: 1px solid var(--azulNormal);
     /* border-spacing: 0; */
     font-size: var(--chico);
  }

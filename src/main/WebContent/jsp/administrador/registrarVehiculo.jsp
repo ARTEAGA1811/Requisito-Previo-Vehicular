@@ -16,7 +16,8 @@
         </div>
 
         <section class="nav">
-            <form method="POST" action="LogOutController" class="nav_boton">
+        
+            <form method="POST" action="ListarVehiculoController" class="nav_boton">
                 <input type="submit" value="Atrás" class="boton_back">
             </form>
         </section>

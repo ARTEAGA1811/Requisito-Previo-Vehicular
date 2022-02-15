@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
+<%
+if (request.getAttribute("autenticacion")==("falso"))
+{ %>
+  <script type="text/javascript">
+      alert("Your message");
+  </script><%
+ 
+
+}
+%>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +62,7 @@
                         </label> 
             
                         <label class="radio-inline"> 
-                            <input type="radio" name="rbtnRadio" value="chasis">Chasis
+                            <input type="radio" name="rbtnRadio" value="chasis"> Chasis
                         </label>
                     </div>
                     

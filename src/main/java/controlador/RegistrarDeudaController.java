@@ -47,9 +47,8 @@ public class RegistrarDeudaController extends HttpServlet {
 		request.setAttribute("idVehiculo", idVehiculo);
 		request.setAttribute("placa", miPlaca);
 		
-		
-		
 		request.getServletContext().getRequestDispatcher("/RedireccionListaDeudas").forward(request,response);
+		//request.getServletContext().getRequestDispatcher("/ListarDeudaController").forward(request,response);
 		
 	}
 

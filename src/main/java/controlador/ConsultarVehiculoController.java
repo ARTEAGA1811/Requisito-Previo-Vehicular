@@ -36,22 +36,29 @@ public class ConsultarVehiculoController extends HttpServlet {
 		VehiculoDAO miVehiculoDAO = new VehiculoDAO();
 		Vehiculo miVehiculo = miVehiculoDAO.getVehiculo(placa_chasis,valor_placa_chasis);
 		
-		System.out.println(miVehiculo);
+		if(miVehiculo.getId() == 0) {
+			getServletContext().getRequestDispatcher("/jsp/consulta/consulta_login.jsp").forward(request, response);
+		}else {
+			System.out.println(miVehiculo);
+			
+			DeudaDAO miDeudaDao = new DeudaDAO();
+			List<Deuda> misDeudas = miDeudaDao.getDeudas(miVehiculo.getId());
+			
+			
+			request.setAttribute("misDeudas", misDeudas);
+			
+			request.setAttribute("placa", miVehiculo.getPlaca());
+			request.setAttribute("marca", miVehiculo.getMarca());
+			request.setAttribute("modelo", miVehiculo.getModelo());
+			request.setAttribute("anio", miVehiculo.getAnio());
+//			request.setAttribute("propietario", miVehiculo.getPropietario());
+			
+			getServletContext().getRequestDispatcher("/jsp/consulta/informacionVehiculo.jsp").forward(request, response);
 		
-		DeudaDAO miDeudaDao = new DeudaDAO();
-		List<Deuda> misDeudas = miDeudaDao.getDeudas(miVehiculo.getId());
+			
+		}
 		
 		
-		request.setAttribute("misDeudas", misDeudas);
-		
-		request.setAttribute("placa", miVehiculo.getPlaca());
-		request.setAttribute("marca", miVehiculo.getMarca());
-		request.setAttribute("modelo", miVehiculo.getModelo());
-		request.setAttribute("anio", miVehiculo.getAnio());
-//		request.setAttribute("propietario", miVehiculo.getPropietario());
-		
-		getServletContext().getRequestDispatcher("/jsp/consulta/informacionVehiculo.jsp").forward(request, response);
-	
 		
 		
 	}

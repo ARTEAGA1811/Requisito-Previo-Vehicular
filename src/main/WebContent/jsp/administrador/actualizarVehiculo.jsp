@@ -19,7 +19,8 @@
 
         <section class="nav">
             <h1 class="dato_principal">Placa del vehículo: ${placa} </h1>
-            <form method="POST" action="LogOutController" class="nav_boton">
+            
+            <form method="POST" action="ListarVehiculoController" class="nav_boton">
                 <input type="submit" value="Atrás" class="boton_back">
             </form>
         </section>
@@ -53,6 +54,5 @@
         </div>
   
     </main>
-    
 </body>
 </html>
