@@ -1,64 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Informaciï¿½n de Vehiculo</title>
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-		crossorigin="anonymous">
-	
-	<link rel="stylesheet" href="estilo.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Vehículo</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/informacionVehiculo.css">
 </head>
-
 <body>
-	<div class="wrapper">
-		<h1>Informaciï¿½n del Vehiculo</h1>
-		<div class="cont">
-			<p>Placa: ${placa}</p>
-			<br>
-			<p>Anio: ${anio}</p>
-			<br>
-			<p>Marca: ${marca}</p>
-			<br>
-			<p>Modelo: ${modelo}</p>
-			
+    <main class="cuerpo">
 
-		</div>
-		<h3>Valores Pendientes</h3>
-		<table class="tabla">
-			<tr>
-				<td>Descripciï¿½n del rubro</td>
-				<td>Valor</td>
-				<td>Anio</td>
-			</tr>
+        <div class="container_titulo">
+            <h1 class="titulo">Información del Vehículo</h1>
+        </div>
 
-			<c:forEach items="${misDeudas}" var="deudas">
-				<tr>
-					<td>Impuesto Rodaje</td>
-					<td>${deudas.valor}</td>
-					<td>${deudas.anio}</td>
-				</tr>
-			</c:forEach>
+        <section class="nav">
+            <h1 class="dato_principal">Bienvenido</h1>
+            <form method="POST" action="LogOutController" class="nav_boton">
+                <input type="submit" value="Salir" class="boton_back">
+            </form>
+        </section>
 
-		</table>
-		
-		<form method="POST" action="LogOutController">
-			<input type="submit" value="Cerrar"></input>
-		</form>
+        <div class="container"> 
+            <div class="principal">
+                <section class="infoVehiculo">
+                    <p class="infoVehiculo-item">Placa: </p>
+                    <input type="text" value="${placa}" readonly>
 
+                    <p class="infoVehiculo-item">Año: </p>
+                    <input type="text" value="${anio}" readonly>
 
-	</div>
+                    <p class="infoVehiculo-item">Marca: </p>
+                    <input type="text" value="${marca}" readonly>
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+                    <p class="infoVehiculo-item">Modelo: </p>
+                    <input type="text" value="${modelo}" readonly>
+                    
+                </section>
+    
+                <h3 class="val_pendientes">Valores Pendientes</h3>
+    
+                <section class="container__tabla">
+                    <table class="tabla">
+                        <tr>
+                            <td class="encabezado td">Descripción del rubro</td>
+                            <td class="encabezado td">Valor</td>
+                            <td class="encabezado td">Año</td>
+                        </tr>
+                        <c:forEach items="${misDeudas}" var="deudas">
+                            <tr>
+                                <td class="td">Impuesto Rodaje</td>
+                                <td class="td">${deudas.valor}</td>
+                                <td class="td">${deudas.anio}</td>
+                            </tr>
+                        </c:forEach>   
+                    </table>
+                </section>
+            </div>
+                        
+        </div>
+    </main>
+    
 </body>
-
 </html>

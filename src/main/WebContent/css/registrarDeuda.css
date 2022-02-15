@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+
+:root{
+    --azulOscuro: #142B45;
+    --blanco: #FFFFFF;
+    --azulNormal: #1A4E8E;
+    --celeste: #E6EDF6;
+
+    --extraGrande: 3.5rem;
+    --grande: 3.3rem;
+    --mediano: 2.5rem;
+    --chico: 1.6rem;
+}
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo 2', cursive;
+    font-size: 62.5%;
+}
+
+.cuerpo{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+.container_titulo{
+    width: 100%;
+    color: var(--blanco);
+    background-color: var(--azulOscuro);
+}
+
+.titulo{
+    font-size: var(--grande);
+    padding-left: 4rem;
+}
+
+.nav{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dato_principal{
+    font-size: var(--grande);
+    color: var(--azulNormal);
+    margin-left: 4rem;
+}
+
+.nav_boton{
+    margin-right: 4rem;
+}
+
+.boton_back{
+    font-size: var(--chico);
+    padding: 0.3rem 5.7rem;  
+    font-weight: bold;  
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--azulNormal);
+    color: var(--blanco);
+}
+
+
+
+/*Parte 2*/
+
+
+.container{
+    background-color: var(--celeste);
+    display: grid;
+    grid-template-columns: 90%;
+    justify-content: center;
+}
+
+.principal{
+    background-color: var(--blanco);
+    margin-top: 3rem;
+    height: 90%;  
+
+    /* display: grid;
+    align-content: center; */
+}
+
+
+
+.form{
+    display: grid;
+    grid-template-columns: min-content 24rem;
+    grid-auto-rows: min-content;
+    row-gap: 0.2rem;
+    column-gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 4rem;
+}
+
+.form > span{
+    font-size: var(--mediano);
+    font-weight: bold;
+}
+
+.form > .item{
+    font-size: var(--chico);
+    border: 0.1rem solid black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.submit{
+    font-size: var(--chico);
+    font-weight: bold; 
+    padding: 0.3rem 5.7rem;  
+    border: none;
+    border-radius: 5px;
+    margin-top: 4rem;
+    grid-column: 1 / 3;
+    justify-self: center;  
+    
+    cursor: pointer;
+    background-color: var(--azulNormal);
+    color: var(--blanco);
+}

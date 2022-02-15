@@ -4,45 +4,59 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Lista vehiculos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="estilo.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deudas del Vehículo</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/listaDeudas.css">
 </head>
-
 <body>
-	
-    <div class="wrapper">
-        <h1>Deudas vehiculo ${placa}</h1>
-        <div class="boton">
-            <a href="RegistrarVehiculoController">Nueva Deuda</a>
+    <main class="cuerpo">
+
+        <div class="container_titulo">
+            <h1 class="titulo">Deudas del Vehículo</h1>
         </div>
 
-        <table class="tabla">
-            <tr>
-                <td>Descripción del rubro</td>
-                <td>Valor</td>
-                <td>Anio</td>
-            </tr>
+        <section class="nav">
+            <h1 class="dato_principal">Placa del vehículo: ${placa} </h1>
+            
+            <form method="POST" action="LogOutController" class="nav_boton">
+                <input type="submit" value="Atrás" class="boton_back">
+            </form>
+            
+        </section>
 
-            <c:forEach items="${deudas}" var="deuda">
-                <tr>
-                    <td>Impuesto Rodaje</td>
-                    <td>${deuda.valor} </td>
-                    <td>${deuda.anio}</td>
-                </tr>
-            </c:forEach>
+        <div class="container">
+            <div class="principal">
+              
+                <div class="container_form">
+					<a href="RedireccionController?redireccion=2&placa=${placa}" class="boton" class="boton">Nueva Deuda</a>
+				</div>
+                
+                <h2 class="valores_pendientes">Valores pendientes</h2>
 
-        </table>
-
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+                <section class="container__tabla">
+                    <table class="tabla">
+                        <tr>
+                            <td class="td encabezado">Descripción del rubro</td>
+                            <td class="td encabezado">Valor</td>
+                            <td class="td encabezado">Año</td>
+                        </tr>
+            
+                        <c:forEach items="${deudas}" var="deuda">
+                            <tr>
+                                <td class="td">Impuesto Rodaje</td>
+                                <td class="td">${deuda.valor}</td>
+                                <td class="td">${deuda.anio}</td>
+                            </tr>
+                        </c:forEach>   
+                    </table>
+                </section>
+            </div>
+        </div>
+    </main>
+    
 </body>
-
 </html>

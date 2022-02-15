@@ -3,48 +3,55 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Lista vehiculos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="estilo.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vehículos</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/listaVehiculos.css">
 </head>
-
 <body>
-
-    <div class="wrapper">
-        <h1>Lista de Vehiculos</h1>
-        <div class="boton">
-            <a href="RedireccionController?redireccion=0">Nuevo Vehiculo</a>
+    <main class="cuerpo">
+        <div class="container_titulo">
+            <h1 class="titulo">Información del Vehículo</h1>
         </div>
 
-        <table class="tabla">
-            <tr>
-                <td>Placa</td>
-                <td>Propietario</td>
-                <td>Año</td>
-                <td>Acciones</td>
-            </tr>
-
-            <c:forEach items="${vehiculos}" var="vehiculo">
-                <tr>
-                    <td>${vehiculo.placa}</td>
-                    <td>${vehiculo.propietario}</td>
-                    <td>${vehiculo.anio}</td>
-                    <td><a href="ListarDeudaController?idVehiculo=${vehiculo.id}&placa=${vehiculo.placa}">Ver deudas</a> || <a href="RedireccionController?placa=${vehiculo.placa}&redireccion=1">Actualizar</a> | <a href="EliminarVehiculoController?idVehiculo=${vehiculo.id}">Eliminar</a>
-                    </td>
-                </tr>
-            </c:forEach>
-
-        </table>
-
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <section class="nav">
+            <h1 class="dato_principal">Bienvenido ${nombreAdmin} </h1>
+            <form method="POST" action="LogOutController" class="nav_boton">
+                <input type="submit" value="Salir" class="boton_back">
+            </form>
+        </section>
+        
+        <div class="container">
+            <div class="principal">
+                
+				<div class="container_form">
+					<a href="RedireccionController?redireccion=0" class="boton">Registrar Vehículo</a>
+				</div>
+                <section class="container__tabla">
+                    <table class="tabla">
+                        <tr>
+                            <td class="encabezado td">Placa</td>
+                            <td class="encabezado td">Propietario</td>
+                            <td class="encabezado td">Año</td>
+                            <td class="encabezado td">Acciones</td>
+                        </tr>
+            
+                        <c:forEach items="${vehiculos}" var="vehiculo">
+                            <tr>
+                                <td class="td">${vehiculo.placa}</td>
+                                <td class="td">${vehiculo.propietario}</td>
+                                <td class="td">${vehiculo.anio}</td>
+                                <td class="td acciones"><a href="ListarDeudaController?idVehiculo=${vehiculo.id}&placa=${vehiculo.placa}">Ver deudas</a> || <a href="RedireccionController?placa=${vehiculo.placa}&redireccion=1">Actualizar</a> || <a href="EliminarVehiculoController?idVehiculo=${vehiculo.id}">Eliminar</a></td>
+                            </tr>
+                        </c:forEach>
+            
+                    </table>
+                </section>    
+            </div>
+        </div>
+    </main>
 </body>
-
 </html>

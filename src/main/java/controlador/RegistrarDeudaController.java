@@ -35,14 +35,21 @@ public class RegistrarDeudaController extends HttpServlet {
 		int idVehiculo = Integer.parseInt(request.getParameter("id"));
 		String nuevoValor  = request.getParameter("valor");
 		String nuevoAnio = request.getParameter("anio");
+		String miPlaca = request.getParameter("placa");
+		
+		System.out.println("RegistrarDeuda: " + idVehiculo + " " + miPlaca);
 		
 		Deuda miDeuda = new Deuda(nuevoAnio, nuevoValor, idVehiculo);
 		
 		DeudaDAO miDeudaDAO = new DeudaDAO();
 		miDeudaDAO.registrar(miDeuda);
 		
-		doGet(request, response);
-
+		request.setAttribute("idVehiculo", idVehiculo);
+		request.setAttribute("placa", miPlaca);
+		
+		
+		
+		request.getServletContext().getRequestDispatcher("/RedireccionListaDeudas").forward(request,response);
 		
 	}
 

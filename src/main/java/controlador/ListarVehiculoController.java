@@ -25,6 +25,7 @@ public class ListarVehiculoController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String nombreAdministrador = request.getParameter("nombreAdmin");
 		VehiculoDAO miVehiculoDAO = new VehiculoDAO();
 		List <Vehiculo> listaVehiculos = miVehiculoDAO.getVehiculos();
 		for( Vehiculo bucle: listaVehiculos) {
@@ -32,6 +33,7 @@ public class ListarVehiculoController extends HttpServlet {
 		}
 		
 		request.setAttribute("vehiculos", listaVehiculos);
+		request.setAttribute("nombreAdmin", nombreAdministrador);
 		getServletContext().getRequestDispatcher("/jsp/administrador/listaVehiculos.jsp").forward(request, response);
 	
 	}

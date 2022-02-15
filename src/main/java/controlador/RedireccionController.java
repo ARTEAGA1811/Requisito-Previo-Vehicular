@@ -26,6 +26,7 @@ public class RedireccionController extends HttpServlet {
 		//Si es 1 se redirige a la GUI de actualizar un auto
 		if(request.getParameter("redireccion").equals("0")) {
 			getServletContext().getRequestDispatcher("/jsp/administrador/registrarVehiculo.jsp").forward(request, response);
+			
 		}else if(request.getParameter("redireccion").equals("1")) {
 			String miPlaca = request.getParameter("placa");
 			VehiculoDAO vehiculodao = new VehiculoDAO();
@@ -40,6 +41,14 @@ public class RedireccionController extends HttpServlet {
 			request.setAttribute("propietario", miVehiculo.getPropietario());
 			
 			getServletContext().getRequestDispatcher("/jsp/administrador/actualizarVehiculo.jsp").forward(request, response);
+		}else if(request.getParameter("redireccion").equals("2")) {
+			String miPlaca = request.getParameter("placa");
+			VehiculoDAO vehiculodao = new VehiculoDAO();
+			Vehiculo miVehiculo = vehiculodao.getVehiculo("placa", miPlaca);
+			
+			request.setAttribute("id", miVehiculo.getId());
+			request.setAttribute("placa", miVehiculo.getPlaca());
+			getServletContext().getRequestDispatcher("/jsp/administrador/registrarDeuda.jsp").forward(request, response);
 		}else {
 			System.out.println("Ha ocurrido un error en la redireccion");
 		}
