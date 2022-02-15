@@ -105,6 +105,7 @@
     background-color: var(--azulNormal);
     color: var(--blanco);
     cursor: pointer;
+    text-decoration: none;
 }
 
 
@@ -121,6 +122,7 @@
     grid-template-columns: 80%;
     grid-template-rows:0 min-content;
     justify-content: center;
+    overflow: auto;
     
 }
 

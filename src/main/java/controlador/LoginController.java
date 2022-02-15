@@ -34,9 +34,9 @@ public class LoginController extends HttpServlet {
 		if(adminAuten != null) {
 			HttpSession miSesion = request.getSession();
 			miSesion.setAttribute("usuario", adminAuten);
-			request.setAttribute("nombreAdmin", adminAuten.getNombre());
+			request.setAttribute("nombreAdmin", adminAuten.getNombre().toUpperCase());
 			
-			request.getRequestDispatcher("ListarVehiculoController").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/ListarVehiculoController").forward(request, response);
 		}else {
 			request.setAttribute("autenticacion", "falso");
 			getServletContext().getRequestDispatcher("/jsp/consulta/consulta_login.jsp").forward(request, response);

@@ -25,7 +25,7 @@ public class ListarVehiculoController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nombreAdministrador = request.getParameter("nombreAdmin");
+		String nombreAdministrador = (String) request.getAttribute("nombreAdmin");
 		VehiculoDAO miVehiculoDAO = new VehiculoDAO();
 		List <Vehiculo> listaVehiculos = miVehiculoDAO.getVehiculos();
 		for( Vehiculo bucle: listaVehiculos) {
