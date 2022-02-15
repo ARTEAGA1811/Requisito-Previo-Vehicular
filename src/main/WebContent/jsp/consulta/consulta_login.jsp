@@ -23,12 +23,12 @@
             <div class="container_img">
                 <img src="${pageContext.request.contextPath}/resources/profile-user.svg" alt="icono persona" class="icono_persona">
             </div>
-            <input type="text" placeholder="Usuario" name="txtUsuario" class="form_login--input">
+            <input type="text" placeholder="Usuario" name="txtUsuario" class="form_login--input" required>
             
             <div class="container_img">
                 <img src="${pageContext.request.contextPath}/resources/padlock.png" alt="icono candado" class="icono_candado">
             </div>
-            <input type="password" placeholder="Contraseña" name="txtClave" class="form_login--input">      
+            <input type="password" placeholder="Contraseña" name="txtClave" class="form_login--input" required>      
             
             <input type="submit" value="Entrar" class="form_login--submit">
         </form>
@@ -58,7 +58,7 @@
                     
                     <div class="container_ingresoDato">
                         <p class="ingresarDato">Ingrese el dato</p>
-                        <input type="text" name="valor_placa_chasis" class="input_dato">
+                        <input type="text" name="valor_placa_chasis" class="input_dato" requried>
                     </div>
                     
                     <input type="submit" value="Consultar" class="consultar_submit">
