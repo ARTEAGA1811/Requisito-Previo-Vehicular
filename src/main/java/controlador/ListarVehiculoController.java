@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.dao.VehiculoDAO;
+import modelo.entidad.Administrador;
 import modelo.entidad.Vehiculo;
 
 
@@ -25,7 +26,8 @@ public class ListarVehiculoController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nombreAdministrador = (String) request.getAttribute("nombreAdmin");
+		//String nombreAdministrador = (String) request.getAttribute("nombreAdmin");
+		Administrador miAdmin = (Administrador) request.getSession().getAttribute("miAdmin");
 		VehiculoDAO miVehiculoDAO = new VehiculoDAO();
 		List <Vehiculo> listaVehiculos = miVehiculoDAO.getVehiculos();
 		for( Vehiculo bucle: listaVehiculos) {
@@ -33,7 +35,7 @@ public class ListarVehiculoController extends HttpServlet {
 		}
 		
 		request.setAttribute("vehiculos", listaVehiculos);
-		request.setAttribute("nombreAdmin", nombreAdministrador);
+		request.setAttribute("nombreAdmin", miAdmin.getNombre());
 		getServletContext().getRequestDispatcher("/jsp/administrador/listaVehiculos.jsp").forward(request, response);
 	
 	}
